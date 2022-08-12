@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 19:39:00 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/12 10:28:12 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/12 10:57:45 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	rgb_validator(char *str)
 		free(tmp[cnt]);
 		cnt++;
 	}
-	if (cnt != 3)
+	if (cnt != 3 || check_comma(str))
 		errors("PROVIDE 3 RGB COLORS", NULL);
 	free(tmp);
 	free(tmp1);
@@ -103,16 +103,18 @@ int	check_is_rgb(char *num)
 
 int	check_comma(char *str)
 {
-	int cnt;
+	int 	cnt;
+	size_t	i;
 
 	cnt = 0;
-	while (str)
+	i = 0;
+	while (str[i])
 	{
-		if (*str == ',')
+		if (str[i] == ',')
 			cnt++;
 		if (cnt > 2)
 			return (1);
-		str++;
+		i++;
 	}
 	return (0);
 }
