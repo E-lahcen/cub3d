@@ -3,28 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zwina <zwina@student.42.fr>                +#+  +:+       +#+         #
+#    By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 16:49:58 by zwina             #+#    #+#              #
-#    Updated: 2022/08/07 16:28:15 by zwina            ###   ########.fr        #
+#    Updated: 2022/08/13 22:45:35 by lelhlami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-ANSI_RESET			:= \\e[0m
-ANSI_BOLD			:= \\e[2m
-ANSI_BOLD_RESET		:= \\e[22m
-ANSI_ULINE			:= \\e[4m
-ANSI_ULINE_RESET	:= \\e[24m
-ANSI_ITALIC			:= \\e[3m
-ANSI_ITALIC_RESET	:= \\e[23m
-ANSI_RED			:= \\e[38;5;1m
-ANSI_WHITE			:= \\e[38;5;15m
-ANSI_YELLOW			:= \\e[38;5;3m
-ANSI_GREEN			:= \\e[38;5;2m
-ANSI_ORANGE			:= \\e[38;5;208m
-ANSI_GOLD			:= \\e[38;5;214m
-ANSI_BLUE			:= \\e[38;5;4m
-ANSI_CYAN			:= \\e[38;5;44m
 
 # DIRECTORIES
 
@@ -41,7 +25,7 @@ HOOKSDIR	:=	hooks
 
 
 NAME		:=	cub3d
-CCWI		:=	cc -Wall -Wextra -Werror -I${INCLDIR} -IPRINT
+CCWI		:=	cc -Wall -Wextra -Werror -I${INCLDIR}
 
 LIBFTLINK	:=	-L${LIBFTDIR} -lft
 LIBFT		:=	${LIBFTDIR}/libft.a
@@ -54,11 +38,17 @@ CSETUPMAP	:=			setup_map_grid.c \
 						fill_map.c \
 						fill_map_utils.c \
 						fill_floor_ceiling.c \
+						fill_floor_ceiling_utils.c \
 						fill_texture.c \
 						map_validation.c
 CSETUP		:=		$(foreach F,${CSETUPMAP},${SETUPMAPDIR}/${F}) \
 					setup_data.c
 CDRAW		:=		draw.c \
+					raycasting.c \
+					raycast_x.c \
+					raycast_y.c \
+					draw_ray_x.c \
+					draw_ray_y.c \
 					draw_line.c
 CHOOKS		:=		hooks.c \
 					move.c \
@@ -67,7 +57,6 @@ CFILES		:=	$(foreach F,${CGNL},${GNLDIR}/${F}) \
 				$(foreach F,${CSETUP},${SETUPDIR}/${F}) \
 				$(foreach F,${CDRAW},${DRAWDIR}/${F}) \
 				$(foreach F,${CHOOKS},${HOOKSDIR}/${F}) \
-				PRINT/print.c \
 				my_mlx_pixel_put.c \
 				main.c
 
@@ -78,6 +67,8 @@ all : ${NAME}
 
 debug : CCWI += -fsanitize=address -g
 debug : all
+
+bonus : all
 
 ${NAME} : ${LIBFT} ${OBJSDIR} ${OBJS}
 	${CCWI} ${LIBFTLINK} ${MLXLINK} ${OBJS} -o ${NAME}
@@ -95,7 +86,6 @@ ${OBJSDIR} :
 	mkdir ${OBJSDIR}/${SETUPDIR}/${SETUPMAPDIR}
 	mkdir ${OBJSDIR}/${DRAWDIR}
 	mkdir ${OBJSDIR}/${HOOKSDIR}
-	mkdir ${OBJSDIR}/PRINT
 
 clean :
 	make clean -C ${LIBFTDIR}
@@ -103,5 +93,6 @@ clean :
 
 fclean : clean
 	make fclean -C ${LIBFTDIR}
+	rm -rf ${NAME}
 
 re : fclean all

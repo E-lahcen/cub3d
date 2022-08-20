@@ -6,13 +6,13 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:35:35 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/11 19:39:22 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:08:43 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	setup_map(t_map *map, t_list *file_content)
+void	setup_map(t_mlx *mlx, t_map *map, t_list *file_content)
 {
 	size_t	i;
 	char	is_complete;
@@ -24,7 +24,7 @@ void	setup_map(t_map *map, t_list *file_content)
 		if (((char *)file_content->content)[i] && \
 				compare_texture(&((char *)file_content->content)[i]))
 			(check_redendency(&((char *)file_content->content)[i], \
-			file_content), fill_texture(map, \
+			file_content), fill_texture(mlx, map, \
 			&((char *)file_content->content)[i]), is_complete++);
 		else if (((char *)file_content->content)[i] && \
 				(!ft_strncmp(&((char *)file_content->content)[i], "C", 1) || \

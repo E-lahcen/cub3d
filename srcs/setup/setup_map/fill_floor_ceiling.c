@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 19:39:00 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/12 10:57:45 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/12 11:11:19 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,61 +60,4 @@ void	fill_floor(t_map *map, char *str)
 	if (!str[i] && !str[i + 1])
 		errors("Invalid map", "error floor element");
 	map->floor.b = ft_atoi(str + ++i);
-}
-
-void	rgb_validator(char *str)
-{
-	char	**tmp;
-	char	*tmp1;
-	int		cnt;
-	size_t	j;
-
-	j = skip_end_whitespaces(str, 1);
-	tmp1 = ft_substr(str, 0, j);
-	tmp = ft_split(tmp1, ',');
-	cnt = 0;
-	while (tmp[cnt])
-	{
-		if (check_is_rgb(tmp[cnt]) || cnt == 3)
-			errors("PROVIDE VALID RGB COLORS!", NULL);
-		free(tmp[cnt]);
-		cnt++;
-	}
-	if (cnt != 3 || check_comma(str))
-		errors("PROVIDE 3 RGB COLORS", NULL);
-	free(tmp);
-	free(tmp1);
-}
-
-int	check_is_rgb(char *num)
-{
-	size_t	i;
-	size_t	j;
-
-	i = skip_begin_whitespaces(num, 1) - 1;
-	j = skip_end_whitespaces(num, 1);
-	while (++i < ft_strlen(num) && i < j)
-	{
-		if (!ft_isdigit(num[i]) || ft_atoi(num) < 0 || ft_atoi(num) > 255)
-			return (1);
-	}
-	return (0);
-}
-
-int	check_comma(char *str)
-{
-	int 	cnt;
-	size_t	i;
-
-	cnt = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ',')
-			cnt++;
-		if (cnt > 2)
-			return (1);
-		i++;
-	}
-	return (0);
 }

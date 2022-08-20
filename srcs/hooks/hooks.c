@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwina <zwina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:50:58 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/07 18:39:00 by zwina            ###   ########.fr       */
+/*   Updated: 2022/08/13 15:08:06 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ int	key_hooks(int key_code, void *param)
 		move(key_code, data);
 	else if (key_code == LOOK_RIGHT || key_code == LOOK_LEFT)
 		key_look(key_code, data);
-	else if (key_code == 35)
-	{
-		printf("player angle == %f\n", data->player.angle);
-		printf("player dir.y == %f\n", data->player.dir.y);
-		printf("player dir.x == %f\n", data->player.dir.x);
-	}
 	return (0);
 }
 

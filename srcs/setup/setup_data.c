@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:29:42 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/08 17:06:10 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:09:08 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	setup_data(t_data *data, char *filename)
 	t_list	*file_content;
 
 	file_content = read_filename(filename);
-	setup_map(&data->map, file_content);
-	setup_grid(&data->map, &data->player);
-	print_map(&data->map);
 	mlx_initializer(&data->mlx);
+	setup_map(&data->mlx, &data->map, file_content);
+	setup_grid(&data->map, &data->player);
 	ft_lstclear(&file_content, free);
 }
 

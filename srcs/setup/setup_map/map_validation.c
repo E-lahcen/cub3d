@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwina <zwina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:01:49 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/08/07 16:14:11 by zwina            ###   ########.fr       */
+/*   Updated: 2022/08/13 16:56:05 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-//check validate characters : N E S W 0 1 \0 in the same time 
-//check number of players
-//check map should be surrounded by walls
-//check \0 is surrounded by \0 or 1
 
 void	map_validation(t_map *big_map)
 {
