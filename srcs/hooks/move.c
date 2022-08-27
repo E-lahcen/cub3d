@@ -6,15 +6,12 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 15:58:51 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/13 14:58:31 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/26 23:17:25 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// to_go[0] for y and x
-// to_go[1] for y
-// to_go[2] for x
 void	move(int key_code, t_data *data)
 {
 	t_point	to_go[3];
@@ -52,23 +49,23 @@ void	set_translater(int key_code, t_player *player, t_point *to_go)
 	to_go[2].x = player->pos.x;
 	if (key_code == UP)
 	{
-		to_go[1].y += player->dir.y * 5;
-		to_go[2].x += player->dir.x * 5;
+		to_go[1].y += player->dir.y * 25;
+		to_go[2].x += player->dir.x * 25;
 	}
 	else if (key_code == RIGHT)
 	{
-		to_go[1].y += player->sid.y * 5;
-		to_go[2].x += player->sid.x * 5;
+		to_go[1].y += player->sid.y * 25;
+		to_go[2].x += player->sid.x * 25;
 	}
 	else if (key_code == DOWN)
 	{
-		to_go[1].y += -player->dir.y * 5;
-		to_go[2].x += -player->dir.x * 5;
+		to_go[1].y += -player->dir.y * 25;
+		to_go[2].x += -player->dir.x * 25;
 	}
 	else if (key_code == LEFT)
 	{
-		to_go[1].y += -player->sid.y * 5;
-		to_go[2].x += -player->sid.x * 5;
+		to_go[1].y += -player->sid.y * 25;
+		to_go[2].x += -player->sid.x * 25;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:32:31 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/13 22:32:18 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:13:26 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	raycast_x(t_ray *ray, t_map *map, t_player *player, double r_angle)
 	ray->x = player->x;
 	ray->rp.y = player->pos.y;
 	ray->rp.x = player->pos.x;
-	ray->dis = distance(&player->pos, &ray->rp);
 	if ((r_angle >= 0 && r_angle < PI / 2) || \
 			(r_angle > (3 * PI) / 2 && r_angle <= 2 * PI))
 		raycast_x_right(ray, map, player, r_angle);

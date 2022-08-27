@@ -6,14 +6,14 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:06:50 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/13 11:12:12 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/20 22:24:38 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
+{	
 	char	*dst;
 
 	if (x >= SCREENWIDTH || x < 0 || y >= SCREENHEIGHT || y < 0)

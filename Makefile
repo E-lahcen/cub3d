@@ -6,22 +6,23 @@
 #    By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 16:49:58 by zwina             #+#    #+#              #
-#    Updated: 2022/08/13 22:45:35 by lelhlami         ###   ########.fr        #
+#    Updated: 2022/08/27 12:35:53 by lelhlami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # DIRECTORIES
 
-LIBSDIR		:=	libs
-LIBFTDIR	:=	${LIBSDIR}/Libft
-SRCSDIR		:=	srcs
-OBJSDIR		:=	objs
-INCLDIR		:=	includes
-GNLDIR		:=	get_next_line
-SETUPDIR	:=	setup
-SETUPMAPDIR	:=	setup_map
-DRAWDIR		:=	draw
-HOOKSDIR	:=	hooks
+LIBSDIR			:=	libs
+LIBFTDIR		:=	${LIBSDIR}/Libft
+SRCSDIR			:=	srcs
+OBJSDIR			:=	objs
+INCLDIR			:=	includes
+GNLDIR			:=	get_next_line
+SETUPDIR		:=	setup
+SETUPMAPDIR		:=	setup_map
+DRAWDIR			:=	draw
+DRAWDIR_MINI	:=	draw_minimap
+HOOKSDIR		:=	hooks
 
 
 NAME		:=	cub3d
@@ -43,7 +44,9 @@ CSETUPMAP	:=			setup_map_grid.c \
 						map_validation.c
 CSETUP		:=		$(foreach F,${CSETUPMAP},${SETUPMAPDIR}/${F}) \
 					setup_data.c
-CDRAW		:=		draw.c \
+CDRAW_MINI	:=		draw_mini_map.c
+CDRAW		:=		$(foreach F,${CDRAW_MINI},${DRAWDIR_MINI}/${F}) \
+					draw.c \
 					raycasting.c \
 					raycast_x.c \
 					raycast_y.c \
@@ -58,6 +61,7 @@ CFILES		:=	$(foreach F,${CGNL},${GNLDIR}/${F}) \
 				$(foreach F,${CDRAW},${DRAWDIR}/${F}) \
 				$(foreach F,${CHOOKS},${HOOKSDIR}/${F}) \
 				my_mlx_pixel_put.c \
+				print/print.c \
 				main.c
 
 SRCS		:=	$(foreach F,${CFILES},${SRCSDIR}/${F})
@@ -85,7 +89,9 @@ ${OBJSDIR} :
 	mkdir ${OBJSDIR}/${SETUPDIR}
 	mkdir ${OBJSDIR}/${SETUPDIR}/${SETUPMAPDIR}
 	mkdir ${OBJSDIR}/${DRAWDIR}
+	mkdir ${OBJSDIR}/${DRAWDIR}/${DRAWDIR_MINI}
 	mkdir ${OBJSDIR}/${HOOKSDIR}
+	mkdir ${OBJSDIR}/print
 
 clean :
 	make clean -C ${LIBFTDIR}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_look.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwina <zwina@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 16:08:13 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/11 16:32:01 by zwina            ###   ########.fr       */
+/*   Updated: 2022/08/26 16:55:51 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	key_look(int key_code, t_data *data)
 {
 	double	rotate;
 
-	rotate = PI / 64;
+	rotate = PI / 40;
 	if (key_code == LOOK_RIGHT)
 	{
 		data->player.angle += rotate;

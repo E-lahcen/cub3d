@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:23:28 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/13 15:21:52 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/27 12:32:46 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@
 # define PI 3.1415926535
 # define SCREENWIDTH 1920
 # define SCREENHEIGHT 1080
+# define MINIMAPHEIGHT 230
+# define MINIMAPWIDTH 300
 # define GAP 64
+# define MINIGAP MINIMAPHEIGHT / 11
 # define HFOV 0.523598775
 
 # define NO 1
@@ -102,8 +105,7 @@ typedef struct s_map
 {
 	t_block	**grid;
 	char	**map;
-	double	tx;
-	double	ty;
+	char	**mini_map;
 	size_t	width;
 	size_t	height;
 	t_rgb	floor;
@@ -135,7 +137,7 @@ int		close_window(void *param);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		get_color_from_img(t_img *img, int x, int y);
 //		HOOKS
-//			hooks.c
+//			hooks.c	
 int		key_hooks(int key_code, void *param);
 void	re_draw(t_data *data);
 //			move.c
@@ -189,6 +191,12 @@ void	rgb_validator(char *str);
 int		check_is_rgb(char *num);
 int		check_comma(char *str);
 //		DRAW
+//			DRAW_MINIMAP
+void		draw_mini_map(t_data *data);
+void    	draw_mini_map_player(t_data *data);
+void	    set_mini_map(t_data *data);
+void		free_double(char **tab);
+void		print_maps(t_data *data);
 //		draw.c
 void	draw(t_data *data);
 double	get_pos_angle(double angle);
@@ -223,4 +231,5 @@ double	setup_draw_line(t_point *begin, t_point *end, \
 						t_point *middle, t_point *d);
 int		get_rgb(t_rgb color);
 
+# include "print.h"
 #endif
