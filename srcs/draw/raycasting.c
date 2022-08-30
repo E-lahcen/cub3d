@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:23:58 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 11:59:44 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/27 16:39:00 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_rays(t_data *data)
 	}
 }
 
-char	is_pn_in_blk(t_block *block, t_point *point)
+int	is_pn_in_blk(t_block *block, t_point *point)
 {
 	if (point->x >= block->top_left.x && \
 		point->y >= block->top_left.y && \

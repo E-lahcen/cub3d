@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:23:28 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 12:32:46 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/29 15:24:57 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # include "get_next_line.h"
 
 # define PI 3.1415926535
-# define SCREENWIDTH 1920
-# define SCREENHEIGHT 1080
-# define MINIMAPHEIGHT 230
-# define MINIMAPWIDTH 300
+# define SCREENWIDTH 1280
+# define SCREENHEIGHT 720
+# define MINIMAPHEIGHT 210
+# define MINIMAPWIDTH 210
 # define GAP 64
-# define MINIGAP MINIMAPHEIGHT / 11
+# define MINIGAP 10
 # define HFOV 0.523598775
 
 # define NO 1
@@ -104,6 +104,7 @@ typedef struct s_block
 typedef struct s_map
 {
 	t_block	**grid;
+	t_block	**mini_grid;
 	char	**map;
 	char	**mini_map;
 	size_t	width;
@@ -194,15 +195,21 @@ int		check_comma(char *str);
 //			DRAW_MINIMAP
 void		draw_mini_map(t_data *data);
 void    	draw_mini_map_player(t_data *data);
+void		draw_mini_blocks(t_data *data, t_point p1, t_point p2, t_point *circle);
+void		set_circle(t_data *data, t_point *circle);
+int			verify_in_circle(t_point *circle, double x, double y);
+//			DRAW_MINIMAP_UTILS
 void	    set_mini_map(t_data *data);
-void		free_double(char **tab);
+void		mini_setup_grid(t_data *data);
 void		print_maps(t_data *data);
+void		free_double(t_data *data);
+
 //		draw.c
 void	draw(t_data *data);
 double	get_pos_angle(double angle);
 //		raycasting.c
 void	draw_rays(t_data *data);
-char	is_pn_in_blk(t_block *block, t_point *point);
+int	is_pn_in_blk(t_block *block, t_point *point);
 double	distance(t_point *p1, t_point *p2);
 t_point	get_range(double x, double y);
 double	mapping(double p, t_point in, t_point out);

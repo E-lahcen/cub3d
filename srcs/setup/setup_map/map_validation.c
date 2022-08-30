@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:01:49 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/08/27 12:11:03 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/27 16:14:20 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	check_number_players(t_map *big_map)
 		}
 		i++;
 	}
-	printf("players = %d\n", n);
 	if (n != 1)
 		errors("Check number of players!", NULL);
 }
