@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:23:28 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/29 15:24:57 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:59:54 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,8 +196,7 @@ int		check_comma(char *str);
 void		draw_mini_map(t_data *data);
 void    	draw_mini_map_player(t_data *data);
 void		draw_mini_blocks(t_data *data, t_point p1, t_point p2, t_point *circle);
-void		set_circle(t_data *data, t_point *circle);
-int			verify_in_circle(t_point *circle, double x, double y);
+int			verify_in_circle(double x, double y);
 //			DRAW_MINIMAP_UTILS
 void	    set_mini_map(t_data *data);
 void		mini_setup_grid(t_data *data);
