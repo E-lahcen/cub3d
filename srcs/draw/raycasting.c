@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:23:58 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 16:39:00 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/10 13:19:27 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_rays(t_data *data)
 			draw_ray_y(&ray_y, data, r_angle);
 		else
 			draw_ray_x(&ray_x, data, r_angle);
-		r_angle += PI / 6000;
+		r_angle += PI / 5000;
 	}
 }
 

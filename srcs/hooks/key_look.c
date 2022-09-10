@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 16:08:13 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/26 16:55:51 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/08/31 19:04:31 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	key_look(int key_code, t_data *data)
 {
 	double	rotate;
 
-	rotate = PI / 40;
+	rotate = PI / 30;
 	if (key_code == LOOK_RIGHT)
 	{
 		data->player.angle += rotate;

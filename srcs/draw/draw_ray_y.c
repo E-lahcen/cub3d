@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 08:51:28 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 11:51:23 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/06 12:14:15 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	draw_ray_y(t_ray *ray, t_data *data, double angle)
 	p[1].x = row;
 	p[0].y = 0;
 	p[1].y = (SCREENHEIGHT - h) / 2;
-	// printf("dis = %f\n", ray->dis);
 	draw_line(&data->mlx.img, &p[0], &p[1], get_rgb(data->map.ceiling));
 	p[0].y = p[1].y;
 	p[1].y += h;

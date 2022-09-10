@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:01:49 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/08/27 16:14:20 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/03 11:41:24 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	check_valid_symbols(t_map *big_map)
 				tmp_map[i][j] != 'S' && \
 				tmp_map[i][j] != 'W' && \
 				tmp_map[i][j] != '0' && \
-				tmp_map[i][j] != '1')
+				tmp_map[i][j] != '1' && \
+				tmp_map[i][j] != '3')
 				errors("Invalid symbol inside the map", NULL);
 			j++;
 		}

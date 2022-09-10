@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:35:35 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 12:19:51 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/03 11:38:24 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	setup_map(t_mlx *mlx, t_map *map, t_list *file_content)
 			&((char *)file_content->content)[i]), is_complete++);
 		else if (((char *)file_content->content)[i] && is_complete == 6)
 			(fill_map(map, file_content), is_complete++);
+		else if (((char *)file_content->content)[i] != '\0')
+			errors("Invalid charachters inside map !", NULL);
 		file_content = file_content->next;
 	}
 	if (is_complete < 7)

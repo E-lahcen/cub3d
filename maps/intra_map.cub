@@ -1,19 +1,19 @@
-            NO           ./textures/planks.xpm                  
+            NO           ./textures/bricks.xpm                  
 
 
-SO ./textures/bark.xpm
+SO ./textures/bricks.xpm
 
-WE ./textures/bark.xpm
+WE ./textures/bricks.xpm
 
-EA ./textures/planks.xpm
+EA ./textures/bricks.xpm
 
 
-        C    190,                       190                 ,00000000255
+        C    190,                       250                 ,00000000255
                  
-            F        0,150,0
+            F        20,10,10
 
                  1111111111111111111111111
-                 1000W00000110000000000101                
+                 1000E30000110000000000101                
                  10110000011100000000000011                    
                  1100100000000000000000000111                
         11111111110110000011100000000000011                  

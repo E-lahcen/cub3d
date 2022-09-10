@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:23:28 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/31 11:59:54 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/04 15:51:48 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@
 # define MINIMAPHEIGHT 210
 # define MINIMAPWIDTH 210
 # define GAP 64
-# define MINIGAP 10
+# define MINIGAP 14
+# define MINIMAPSTART_X SCREENWIDTH / 10
+# define MINIMAPSTART_Y SCREENHEIGHT - 260
 # define HFOV 0.523598775
 
 # define NO 1
@@ -101,20 +103,30 @@ typedef struct s_block
 	char	c;
 }			t_block;
 
-typedef struct s_map
+typedef struct s_sprite
 {
-	t_block	**grid;
-	t_block	**mini_grid;
-	char	**map;
-	char	**mini_map;
+	t_img	img;
 	size_t	width;
 	size_t	height;
-	t_rgb	floor;
-	t_rgb	ceiling;
-	t_txr	no;
-	t_txr	ea;
-	t_txr	so;
-	t_txr	we;
+	size_t 	x;
+	size_t 	y;
+}	t_sprite;
+
+typedef struct s_map
+{
+	t_block		**grid;
+	t_block		**mini_grid;
+	char		**map;
+	char		**mini_map;
+	size_t		width;
+	size_t		height;
+	t_rgb		floor;
+	t_rgb		ceiling;
+	t_txr		no;
+	t_txr		ea;
+	t_txr		so;
+	t_txr		we;
+	t_sprite	spr;
 }			t_map;
 
 typedef struct s_mlx
@@ -149,6 +161,8 @@ void	moving(t_player *player, t_point *to_go);
 void	player_in_grid(t_map *map, t_player *player);
 //			key_look.c
 void	key_look(int key_code, t_data *data);
+//			mouse_hook.c
+int		mouse_move(int x, int y, void *data);
 //		SETUP
 //			setup_data.c
 void	setup_data(t_data *data, char *filename);
@@ -193,22 +207,28 @@ int		check_is_rgb(char *num);
 int		check_comma(char *str);
 //		DRAW
 //			DRAW_MINIMAP
-void		draw_mini_map(t_data *data);
-void    	draw_mini_map_player(t_data *data);
-void		draw_mini_blocks(t_data *data, t_point p1, t_point p2, t_point *circle);
-int			verify_in_circle(double x, double y);
-//			DRAW_MINIMAP_UTILS
-void	    set_mini_map(t_data *data);
-void		mini_setup_grid(t_data *data);
-void		print_maps(t_data *data);
-void		free_double(t_data *data);
-
+//				draw_minimap.c
+void	draw_mini_map(t_data *data);
+void	draw_mini_map_player(t_data *data);
+void	draw_mini_blocks(t_data *data, t_point p1, t_point p2);
+int		verify_in_circle(double x, double y);
+//				draw_mini_map_utils.c
+void	set_mini_map(t_data *data);
+void	mini_setup_grid(t_data *data);
+void	print_maps(t_data *data);
+void	free_double(t_data *data);
+//			DRAW_SPRITE
+//				drawimg_sprite.c
+void    draw_sprite(t_data *data, t_ray *ray, int r_angle);
+void	draw_line_sprite(t_img *img, t_sprite *spr, t_point *p, int row);
+//				fill_sprite.c
+void	get_img_sprite(t_sprite *spr, char *filename, void *mlx);
 //		draw.c
 void	draw(t_data *data);
 double	get_pos_angle(double angle);
 //		raycasting.c
 void	draw_rays(t_data *data);
-int	is_pn_in_blk(t_block *block, t_point *point);
+int		is_pn_in_blk(t_block *block, t_point *point);
 double	distance(t_point *p1, t_point *p2);
 t_point	get_range(double x, double y);
 double	mapping(double p, t_point in, t_point out);

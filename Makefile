@@ -6,7 +6,7 @@
 #    By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 16:49:58 by zwina             #+#    #+#              #
-#    Updated: 2022/08/27 13:38:09 by lelhlami         ###   ########.fr        #
+#    Updated: 2022/09/04 12:39:39 by lelhlami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,19 +22,20 @@ SETUPDIR		:=	setup
 SETUPMAPDIR		:=	setup_map
 DRAWDIR			:=	draw
 DRAWDIR_MINI	:=	draw_minimap
+DRAWDIR_SPRITE	:=	draw_sprite
 HOOKSDIR		:=	hooks
 
 
-NAME		:=	cub3d
-CCWI		:=	cc -Wall -Wextra -Werror -I${INCLDIR}
+NAME			:=	cub3d
+CCWI			:=	cc -Wall -Wextra -Werror -I${INCLDIR}
 
-LIBFTLINK	:=	-L${LIBFTDIR} -lft
-LIBFT		:=	${LIBFTDIR}/libft.a
-MLXLINK		:=	-lm -lmlx -framework OpenGL -framework AppKit
+LIBFTLINK		:=	-L${LIBFTDIR} -lft
+LIBFT			:=	${LIBFTDIR}/libft.a
+MLXLINK			:=	-lm -lmlx -framework OpenGL -framework AppKit
 
-CGNL		:=		get_next_line.c \
+CGNL			:=		get_next_line.c \
 					get_next_line_utils.c
-CSETUPMAP	:=			setup_map_grid.c \
+CSETUPMAP		:=			setup_map_grid.c \
 						fill_player.c \
 						fill_map.c \
 						fill_map_utils.c \
@@ -42,11 +43,14 @@ CSETUPMAP	:=			setup_map_grid.c \
 						fill_floor_ceiling_utils.c \
 						fill_texture.c \
 						map_validation.c
-CSETUP		:=		$(foreach F,${CSETUPMAP},${SETUPMAPDIR}/${F}) \
+CSETUP			:=		$(foreach F,${CSETUPMAP},${SETUPMAPDIR}/${F}) \
 					setup_data.c
-CDRAW_MINI	:=		draw_mini_map.c \
+CDRAW_MINI		:=		draw_mini_map.c \
 					draw_mini_map_utils.c
-CDRAW		:=		$(foreach F,${CDRAW_MINI},${DRAWDIR_MINI}/${F}) \
+CDRAW_SPRITE	:=	drawing_sprite.c \
+					fill_sprite.c
+CDRAW			:=	$(foreach F,${CDRAW_MINI},${DRAWDIR_MINI}/${F}) \
+					$(foreach F,${CDRAW_SPRITE},${DRAWDIR_SPRITE}/${F}) \
 					draw.c \
 					raycasting.c \
 					raycast_x.c \
@@ -54,19 +58,20 @@ CDRAW		:=		$(foreach F,${CDRAW_MINI},${DRAWDIR_MINI}/${F}) \
 					draw_ray_x.c \
 					draw_ray_y.c \
 					draw_line.c
-CHOOKS		:=		hooks.c \
+CHOOKS			:=	hooks.c \
 					move.c \
-					key_look.c
-CFILES		:=	$(foreach F,${CGNL},${GNLDIR}/${F}) \
-				$(foreach F,${CSETUP},${SETUPDIR}/${F}) \
-				$(foreach F,${CDRAW},${DRAWDIR}/${F}) \
-				$(foreach F,${CHOOKS},${HOOKSDIR}/${F}) \
-				my_mlx_pixel_put.c \
-				print/print.c \
-				main.c
+					key_look.c \
+					mouse_hook.c
+CFILES			:=	$(foreach F,${CGNL},${GNLDIR}/${F}) \
+					$(foreach F,${CSETUP},${SETUPDIR}/${F}) \
+					$(foreach F,${CDRAW},${DRAWDIR}/${F}) \
+					$(foreach F,${CHOOKS},${HOOKSDIR}/${F}) \
+					my_mlx_pixel_put.c \
+					print/print.c \
+					main.c
 
-SRCS		:=	$(foreach F,${CFILES},${SRCSDIR}/${F})
-OBJS		:=	$(patsubst $(SRCSDIR)/%.c,$(OBJSDIR)/%.o,$(SRCS))
+SRCS			:=	$(foreach F,${CFILES},${SRCSDIR}/${F})
+OBJS			:=	$(patsubst $(SRCSDIR)/%.c,$(OBJSDIR)/%.o,$(SRCS))
 
 all : ${NAME}
 
@@ -91,6 +96,7 @@ ${OBJSDIR} :
 	mkdir ${OBJSDIR}/${SETUPDIR}/${SETUPMAPDIR}
 	mkdir ${OBJSDIR}/${DRAWDIR}
 	mkdir ${OBJSDIR}/${DRAWDIR}/${DRAWDIR_MINI}
+	mkdir ${OBJSDIR}/${DRAWDIR}/${DRAWDIR_SPRITE}
 	mkdir ${OBJSDIR}/${HOOKSDIR}
 	mkdir ${OBJSDIR}/print
 

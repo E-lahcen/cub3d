@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:32:31 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 11:55:35 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/04 22:54:39 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	raycast_y(t_ray *ray, t_map *map, t_player *player, double r_angle)
 	ray->rp.y = player->pos.y;
 	ray->rp.x = player->pos.x;
 	if (r_angle > PI && r_angle < 2 * PI)
-	{
 		raycast_y_up(ray, map, player, r_angle);
-	}
 	else if (r_angle > 0 && r_angle < PI)
 		raycast_y_down(ray, map, player, r_angle);
 }
@@ -80,7 +78,8 @@ char	ray_hit_y(t_map *map, t_ray *ray, char side)
 	i = -1;
 	while (++i < map->width)
 		if (is_pn_in_blk(&map->grid[ray->y + offset][i], &ray->rp) && \
-			map->grid[ray->y + offset][i].c == '1')
+			(map->grid[ray->y + offset][i].c == '1' \
+			|| map->grid[ray->y + offset][i].c == '3'))
 			return (1);
 	return (0);
 }

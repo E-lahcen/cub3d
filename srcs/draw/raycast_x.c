@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:32:31 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 11:13:26 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/03 12:16:44 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ char	ray_hit_x(t_map *map, t_ray *ray, char side)
 	i = -1;
 	while (++i < map->height)
 		if (is_pn_in_blk(&map->grid[i][ray->x + offset], &ray->rp) && \
-			map->grid[i][ray->x + offset].c == '1')
+			(map->grid[i][ray->x + offset].c == '1' \
+			|| map->grid[i][ray->x + offset].c == '3'))
 			return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 19:25:14 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/25 16:23:25 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/04 12:43:27 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,4 @@ void	*get_img_texture(t_txr *side, char *filename, void *mlx)
 										&side->img.line_length, \
 										&side->img.endian);
 	return (side->img.img);
-}
-
-void	texture_validation(char *str)
-{
-	size_t	i;
-	size_t	j;
-	char	*tmp;
-
-	i = skip_begin_whitespaces(str, 1);
-	j = skip_end_whitespaces(str, 1);
-	tmp = ft_substr(str, i, j - i);
-	if (access(tmp, R_OK) == -1)
-		errors("PROBLEM AT THE TEXTURE'S PATH", NULL);
-	free(tmp);
 }

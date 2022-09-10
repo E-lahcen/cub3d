@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 15:23:23 by zwina             #+#    #+#             */
-/*   Updated: 2022/08/27 10:43:35 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:44:08 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	draw(&data);
 	mlx_hook(data.mlx.mlx_win, 2, 0, key_hooks, &data);
 	mlx_hook(data.mlx.mlx_win, 17, 0, close_window, NULL);
+	mlx_hook(data.mlx.mlx_win, 6, 0, mouse_move, &data);
 	mlx_loop(data.mlx.mlx);
 	return (0);
 }
