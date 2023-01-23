@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:03:08 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/09/06 11:38:43 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/09/11 19:10:55 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	verify_in_circle(double x, double y)
 	this_point.y = y;
 	player_pos.x = (MINIMAPSTART_X) + MINIMAPWIDTH / 2;
 	player_pos.y = (MINIMAPSTART_Y) + MINIMAPHEIGHT / 2;
-	if (distance(&this_point, &player_pos) > 100)
+	if (distance(&this_point, &player_pos) > 120)
 		return (0);
 	return(1);
 }
